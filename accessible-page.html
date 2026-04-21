@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leafmark – Community Reading Circle</title>
+    <meta
+      name="description"
+      content="Leafmark is a community reading circle that connects book lovers, hosts events, and tracks reading progress together."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --ink: #1a1208;
+        --ink-mid: #4a3f2f;
+        --ink-soft: #7a6e5f;
+        --paper: #faf7f2;
+        --paper-2: #f2ece0;
+        --paper-3: #e8dfc8;
+        --leaf: #3a6b3a;
+        --leaf-dk: #2a4f2a;
+        --leaf-lt: #e8f0e8;
+        --rust: #b04a20;
+        --rust-lt: #faf0eb;
+        --gold: #c08020;
+        --focus-ring: 3px solid #3a6b3a;
+        --radius: 6px;
+        --radius-lg: 12px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --ink: #f0ead8;
+          --ink-mid: #c8baa0;
+          --ink-soft: #90816a;
+          --paper: #1a1710;
+          --paper-2: #22201a;
+          --paper-3: #2e2b22;
+          --leaf: #5a9c5a;
+          --leaf-dk: #7abf7a;
+          --leaf-lt: #1a2e1a;
+          --rust: #e0724a;
+          --rust-lt: #2a1810;
+          --gold: #d4a040;
+          --focus-ring: 3px solid #5a9c5a;
+        }
+      }
+
+      body {
+        font-family: "Source Serif 4", Georgia, serif;
+        font-size: 1.0625rem;
+        line-height: 1.75;
+        background: var(--paper);
+        color: var(--ink);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      :focus-visible {
+        outline: var(--focus-ring);
+        outline-offset: 3px;
+        border-radius: var(--radius);
+      }
+
+      .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 1rem;
+        background: var(--leaf);
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        z-index: 9999;
+      }
+      .skip-link:focus {
+        top: 0.75rem;
+      }
+
+      header {
+        background: var(--leaf-dk);
+        color: #fff;
+        padding: 2.5rem 1.5rem 2rem;
+      }
+      .header-inner {
+        max-width: 68rem;
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .logo-group {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .logo-icon {
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+      }
+      .site-title {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        line-height: 1.1;
+        color: #000000;
+      }
+      .site-tagline {
+        font-style: italic;
+        font-size: 0.95rem;
+        color: rgba(0, 0, 0, 0.75);
+        margin-top: 0.2rem;
+      }
+      .header-cta {
+        display: inline-block;
+        background: var(--gold);
+        color: #1a1208;
+        font-family: "Source Serif 4", Georgia, serif;
+        font-weight: 600;
+        font-size: 0.875rem;
+        padding: 0.55rem 1.2rem;
+        border-radius: var(--radius);
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .header-cta:hover {
+        background: #d4a840;
+      }
+      .header-cta:focus-visible {
+        outline: 3px solid #fff;
+      }
+
+      nav {
+        background: var(--paper-3);
+        border-bottom: 1px solid var(--paper-3);
+      }
+      nav ul {
+        max-width: 68rem;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        list-style: none;
+        display: flex;
+        gap: 0.25rem;
+        flex-wrap: wrap;
+      }
+      nav a {
+        display: block;
+        color: var(--ink-mid);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        padding: 0.75rem 0.9rem;
+        border-bottom: 3px solid transparent;
+        transition:
+          color 0.15s,
+          border-color 0.15s;
+      }
+      nav a:hover {
+        color: var(--leaf);
+        border-bottom-color: var(--leaf);
+      }
+      nav a[aria-current="page"] {
+        color: white;
+        border-bottom-color: var(--leaf);
+      }
+
+      main {
+        flex: 1;
+        max-width: 68rem;
+        margin: 0 auto;
+        padding: 3rem 1.5rem 4rem;
+        width: 100%;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+        margin-bottom: 4rem;
+      }
+      @media (max-width: 640px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .hero-text h1 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 1.15;
+        color: var(--leaf-dk);
+        margin-bottom: 1rem;
+      }
+      @media (prefers-color-scheme: dark) {
+        .hero-text h1 {
+          color: var(--leaf);
+        }
+      }
+      .hero-text p {
+        color: var(--ink-mid);
+        margin-bottom: 1.5rem;
+      }
+      .btn-primary {
+        display: inline-block;
+        background: var(--leaf);
+        color: #000000;
+        font-family: "Source Serif 4", Georgia, serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 0.65rem 1.5rem;
+        border-radius: var(--radius);
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .btn-primary:hover {
+        background: var(--leaf-dk);
+      }
+
+      .hero-image {
+        position: relative;
+      }
+      .hero-image img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        border-radius: var(--radius-lg);
+        display: block;
+      }
+      .image-credit {
+        font-size: 0.75rem;
+        color: var(--ink-soft);
+        margin-top: 0.4rem;
+        text-align: right;
+      }
+
+      .section-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--rust);
+        margin-bottom: 0.4rem;
+      }
+      h2 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: clamp(1.4rem, 3vw, 1.9rem);
+        line-height: 1.2;
+        color: var(--ink);
+        margin-bottom: 0.75rem;
+      }
+
+      .use-case {
+        margin-bottom: 4.5rem;
+      }
+      .use-case p.lead {
+        color: var(--ink-mid);
+        max-width: 52ch;
+        margin-bottom: 1.75rem;
+      }
+
+      .table-wrapper {
+        overflow-x: auto;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--paper-3);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9375rem;
+        background: var(--paper);
+      }
+      caption {
+        font-size: 0.85rem;
+        font-style: italic;
+        color: var(--ink-soft);
+        text-align: left;
+        padding: 0.6rem 1rem 0.4rem;
+        caption-side: top;
+      }
+      thead th {
+        background: var(--paper-3);
+        color: var(--ink-mid);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-align: left;
+        padding: 0.65rem 1rem;
+        border-bottom: 1px solid var(--paper-3);
+      }
+      tbody tr {
+        border-bottom: 1px solid var(--paper-2);
+      }
+      tbody tr:last-child {
+        border-bottom: none;
+      }
+      tbody tr:nth-child(odd) {
+        background: var(--paper-2);
+      }
+      tbody tr:nth-child(even) {
+        background: var(--paper);
+      }
+      tbody td {
+        padding: 0.65rem 1rem;
+        color: var(--ink-mid);
+      }
+      tbody td:first-child {
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .badge {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 0.2rem 0.55rem;
+        border-radius: 50px;
+      }
+      .badge-on {
+        background: var(--leaf-lt);
+        color: var(--leaf-dk);
+      }
+      .badge-upcoming {
+        background: var(--rust-lt);
+        color: var(--rust);
+      }
+      @media (prefers-color-scheme: dark) {
+        .badge-on {
+          background: var(--leaf-lt);
+          color: white;
+        }
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
+      }
+      @media (max-width: 680px) {
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .event-card {
+        background: var(--paper-2);
+        border: 1px solid var(--paper-3);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+      }
+      .event-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+      }
+      .event-card-body {
+        padding: 1.25rem 1.5rem 1.5rem;
+      }
+      .event-date {
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--rust);
+        margin-bottom: 0.35rem;
+      }
+      .event-card-body h3 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: 1.2rem;
+        line-height: 1.25;
+        margin-bottom: 0.5rem;
+      }
+      .event-card-body p {
+        font-size: 0.9rem;
+        color: var(--ink-mid);
+        margin-bottom: 1rem;
+      }
+      .event-card-body a {
+        color: var(--leaf);
+        font-weight: 600;
+        font-size: 0.875rem;
+      }
+      .event-card-body a:hover {
+        color: var(--leaf-dk);
+      }
+
+      .form-card {
+        background: black;
+        border: 1px solid var(--paper-3);
+        border-radius: var(--radius-lg);
+        padding: 1.75rem 2rem;
+      }
+      .form-card h3 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+      }
+      .form-card .form-intro {
+        font-size: 0.9rem;
+        color: var(--ink-mid);
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.1rem;
+      }
+      label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--ink-mid);
+        margin-bottom: 0.35rem;
+      }
+      .required-mark {
+        color: var(--rust);
+        margin-left: 2px;
+      }
+      input[type="text"],
+      input[type="email"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.6rem 0.85rem;
+        font-family: "Source Serif 4", Georgia, serif;
+        font-size: 0.9375rem;
+        color: rgb(0, 0, 0);
+        background: white;
+        border: 1px solid var(--paper-3);
+        border-radius: var(--radius);
+        transition:
+          border-color 0.15s,
+          box-shadow 0.15s;
+        appearance: none;
+      }
+      textarea::placeholder {
+        color: black;
+      }
+      input::placeholder {
+        color: rgb(0, 0, 0);
+      }
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--leaf);
+        box-shadow: 0 0 0 3px rgba(58, 107, 58, 0.2);
+      }
+      textarea {
+        resize: vertical;
+        min-height: 5rem;
+      }
+      .form-hint {
+        font-size: 0.8rem;
+        color: white;
+        margin-top: 0.3rem;
+      }
+      .btn-submit {
+        width: 100%;
+        background: var(--leaf);
+        color: #000000;
+        font-family: "Source Serif 4", Georgia, serif;
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 0.7rem 1rem;
+        border: none;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: background 0.2s;
+        margin-top: 0.5rem;
+      }
+      .btn-submit:hover {
+        background: var(--leaf-dk);
+      }
+      .btn-submit:focus-visible {
+        outline: var(--focus-ring);
+        outline-offset: 3px;
+      }
+
+      .form-success {
+        display: none;
+        background: var(--leaf-lt);
+        border: 1px solid var(--leaf);
+        border-radius: var(--radius);
+        padding: 1rem 1.25rem;
+        color: var(--leaf-dk);
+        font-size: 0.9rem;
+        margin-top: 1rem;
+      }
+      @media (prefers-color-scheme: dark) {
+        .form-success {
+          color: var(--leaf);
+        }
+      }
+
+      .resources {
+        margin-top: 4rem;
+      }
+      .resource-links {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin-top: 1.25rem;
+      }
+      .resource-links a {
+        display: block;
+        background: var(--paper-2);
+        border: 1px solid var(--paper-3);
+        border-radius: var(--radius-lg);
+        padding: 1rem 1.25rem;
+        color: var(--ink);
+        text-decoration: none;
+        transition:
+          border-color 0.15s,
+          background 0.15s;
+      }
+      .resource-links a:hover {
+        border-color: var(--leaf);
+        background: var(--leaf-lt);
+      }
+      .resource-links .link-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: white;
+        margin-bottom: 0.25rem;
+      }
+      .resource-links .link-title {
+        font-weight: 600;
+        color: var(--leaf);
+        font-size: 0.95rem;
+      }
+
+      footer {
+        background-color: var(--paper-3);
+        color: rgba(255, 255, 255, 0.65);
+        padding: 2.5rem 1.5rem;
+        font-size: 0.875rem;
+      }
+      .footer-inner {
+        max-width: 68rem;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+      .footer-brand strong {
+        color: #fff;
+        display: block;
+        font-size: 1.05rem;
+        margin-bottom: 0.3rem;
+      }
+      .footer-nav h2 {
+        font-family: "Source Serif 4", Georgia, serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.6rem;
+      }
+      .footer-nav ul {
+        list-style: none;
+      }
+      .footer-nav li + li {
+        margin-top: 0.35rem;
+      }
+      .footer-nav a {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+      }
+      .footer-nav a:hover {
+        color: #fff;
+      }
+      .footer-bottom {
+        max-width: 68rem;
+        margin: 2rem auto 0;
+        border-top: 1px solid rgb(255, 255, 255);
+        padding-top: 1.25rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .footer-bottom a {
+        color: rgb(255, 255, 255);
+      }
+      .footer-bottom a:hover {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <header role="banner">
+      <div class="header-inner">
+        <div class="logo-group">
+          <svg
+            class="logo-icon"
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect
+              width="48"
+              height="48"
+              rx="10"
+              fill="rgba(255,255,255,0.12)"
+            />
+            <path
+              d="M14 10 C14 10 14 34 14 36 C14 38 16 40 18 40 L34 40 L34 36 L18 36 L18 10 Z"
+              fill="#7abf7a"
+            />
+            <path
+              d="M18 10 L34 10 L34 30 L18 30 Z"
+              fill="rgba(255,255,255,0.9)"
+            />
+            <path
+              d="M21 16 L31 16 M21 20 L31 20 M21 24 L27 24"
+              stroke="#3a6b3a"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+            <path
+              d="M30 26 C30 26 33 22 36 26 C36 26 33 32 30 26Z"
+              fill="#c08020"
+            />
+          </svg>
+          <div>
+            <p class="site-title">Leafmark</p>
+            <p class="site-tagline">A community reading circle</p>
+          </div>
+        </div>
+        <a href="#join-form" class="header-cta">Join the circle</a>
+      </div>
+    </header>
+
+    <nav aria-label="Main navigation">
+      <ul role="list">
+        <li><a href="#" aria-current="page">Home</a></li>
+        <li><a href="#reading-schedule">Schedule</a></li>
+        <li><a href="#upcoming-event">Events</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#join-form">Join</a></li>
+      </ul>
+    </nav>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-text">
+          <p class="section-label" aria-hidden="true">Spring 2025 season</p>
+          <h1 id="hero-heading">Read together. Think deeper.</h1>
+          <p>
+            Leafmark brings readers together for monthly discussions, author
+            talks, and shared reading lists. Whether you prefer fiction, essays,
+            or graphic novels — there's a circle for you.
+          </p>
+          <a href="#join-form" class="btn-primary">Reserve your spot</a>
+        </div>
+        <div class="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80"
+            alt="Shelves of colorful books in a warmly lit library"
+            width="800"
+            height="320"
+            loading="eager"
+          />
+          <p class="image-credit">Photo: Unsplash / Susan Yin</p>
+        </div>
+      </section>
+
+      <section
+        class="use-case"
+        id="reading-schedule"
+        aria-labelledby="schedule-heading"
+      >
+        <p class="section-label" aria-hidden="true">
+          Use case 1 — Group reading
+        </p>
+        <h2 id="schedule-heading">Spring reading schedule</h2>
+        <p class="lead">
+          Each month our circles tackle one title across fiction, non-fiction,
+          and graphic literature. Join any session — no prior attendance
+          required.
+        </p>
+
+        <div
+          class="table-wrapper"
+          role="region"
+          aria-label="Spring 2025 reading schedule"
+        >
+          <table>
+            <caption>
+              Spring 2025 — Leafmark reading programme. Meetings held online
+              every third Saturday, 5 PM Central.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Month</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Pages</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>March</td>
+                <td>The Ministry for the Future</td>
+                <td>Kim Stanley Robinson</td>
+                <td>Cli-fi / Fiction</td>
+                <td>563</td>
+                <td>
+                  <span class="badge badge-on" aria-label="Status: Ongoing"
+                    >Ongoing</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>April</td>
+                <td>Braiding Sweetgrass</td>
+                <td>Robin Wall Kimmerer</td>
+                <td>Nature writing</td>
+                <td>390</td>
+                <td>
+                  <span
+                    class="badge badge-upcoming"
+                    aria-label="Status: Upcoming"
+                    >Upcoming</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>May</td>
+                <td>Persepolis</td>
+                <td>Marjane Satrapi</td>
+                <td>Graphic memoir</td>
+                <td>352</td>
+                <td>
+                  <span
+                    class="badge badge-upcoming"
+                    aria-label="Status: Upcoming"
+                    >Upcoming</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>June</td>
+                <td>Crying in H Mart</td>
+                <td>Michelle Zauner</td>
+                <td>Memoir</td>
+                <td>256</td>
+                <td>
+                  <span
+                    class="badge badge-upcoming"
+                    aria-label="Status: Upcoming"
+                    >Upcoming</span
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section
+        class="use-case"
+        id="upcoming-event"
+        aria-labelledby="event-heading"
+      >
+        <p class="section-label" aria-hidden="true">
+          Use case 2 — Event registration
+        </p>
+        <h2 id="event-heading">April community meetup</h2>
+        <p class="lead">
+          Our in-person spring gathering features a discussion of
+          <em>Braiding Sweetgrass</em>, a seed-swap table, and a short talk by a
+          local botanist.
+        </p>
+
+        <div class="two-col">
+          <article class="event-card" aria-labelledby="card-title">
+            <img
+              src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80"
+              alt="People sitting around a table in warm discussion at an evening event"
+              width="800"
+              height="360"
+              loading="lazy"
+            />
+            <div class="event-card-body">
+              <p class="event-date">
+                <time datetime="2025-04-19T17:00"
+                  >Saturday, April 19, 2025 · 5:00 PM</time
+                >
+              </p>
+              <h3 id="card-title">
+                Spring Gathering &amp; Braiding Sweetgrass Discussion
+              </h3>
+              <p>
+                Join us at the <strong>Colima Municipal Library</strong>, Sala
+                B, for two hours of guided discussion, snacks, and a seed
+                exchange inspired by Robin Wall Kimmerer's ideas on plant
+                kinship.
+              </p>
+              <a
+                href="https://www.openstreetmap.org/?mlat=19.2452&mlon=-103.7241#map=16/19.2452/-103.7241"
+                rel="noopener noreferrer"
+                target="_blank"
+                aria-label="View Colima Municipal Library on OpenStreetMap (opens in a new tab)"
+              >
+                View on map ↗
+              </a>
+            </div>
+          </article>
+
+          <div class="form-card" id="join-form">
+            <h3>Reserve your spot</h3>
+            <p class="form-intro">
+              Spaces are limited to 24 attendees. We'll confirm your place by
+              email within 48 hours.
+            </p>
+
+            <form
+              id="registration-form"
+              novalidate
+              aria-label="Event registration form"
+              onsubmit="handleSubmit(event)"
+            >
+              <div class="form-group">
+                <label for="full-name">
+                  Full name
+                  <span class="required-mark" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="full-name"
+                  name="full-name"
+                  autocomplete="name"
+                  required
+                  aria-required="true"
+                  aria-describedby="name-hint"
+                  placeholder="e.g. Ana García"
+                />
+                <p id="name-hint" class="form-hint">
+                  First and last name as you'd like to be addressed.
+                </p>
+              </div>
+
+              <div class="form-group">
+                <label for="email">
+                  Email address
+                  <span class="required-mark" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                  aria-required="true"
+                  placeholder="you@example.com"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="circle">Which reading circle do you attend?</label>
+                <select id="circle" name="circle" autocomplete="off">
+                  <option value="">— Select one —</option>
+                  <option value="fiction">Fiction circle</option>
+                  <option value="nonfiction">Non-fiction circle</option>
+                  <option value="graphic">Graphic &amp; visual lit</option>
+                  <option value="new">I'm new — any circle!</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message"
+                  >Anything you'd like to bring up at the event?
+                  (optional)</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="3"
+                  placeholder="A question for the discussion, a plant to swap…"
+                  aria-describedby="msg-hint"
+                ></textarea>
+                <p id="msg-hint" class="form-hint">
+                  This helps us tailor the discussion. Max 300 characters.
+                </p>
+              </div>
+
+              <button type="submit" class="btn-submit">
+                Send registration
+              </button>
+
+              <div
+                id="form-success"
+                class="form-success"
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+              ></div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="resources"
+        id="resources"
+        aria-labelledby="resources-heading"
+      >
+        <p class="section-label" aria-hidden="true">Further reading</p>
+        <h2 id="resources-heading">Useful resources</h2>
+        <ul class="resource-links" role="list">
+          <li>
+            <a
+              href="https://kimmerer.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+              aria-label="Robin Wall Kimmerer's official website (opens in a new tab)"
+            >
+              <p class="link-label">Author site</p>
+              <p class="link-title">Robin Wall Kimmerer →</p>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.worldcat.org/"
+              rel="noopener noreferrer"
+              target="_blank"
+              aria-label="WorldCat library catalogue (opens in a new tab)"
+            >
+              <p class="link-label">Find in a library</p>
+              <p class="link-title">WorldCat catalogue →</p>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.goodreads.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+              aria-label="Goodreads reading tracker (opens in a new tab)"
+            >
+              <p class="link-label">Track your reading</p>
+              <p class="link-title">Goodreads →</p>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://standardebooks.org/"
+              rel="noopener noreferrer"
+              target="_blank"
+              aria-label="Standard Ebooks — free, high-quality ebooks (opens in a new tab)"
+            >
+              <p class="link-label">Free ebooks</p>
+              <p class="link-title">Standard Ebooks →</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <strong>Leafmark</strong>
+          <p>A community reading circle<br />based in Colima, Mexico.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <h2>Navigate</h2>
+          <ul role="list">
+            <li><a href="#">Home</a></li>
+            <li><a href="#reading-schedule">Schedule</a></li>
+            <li><a href="#upcoming-event">Events</a></li>
+            <li><a href="#join-form">Join</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-nav" aria-label="External resources">
+          <h2>Connect</h2>
+          <ul role="list">
+            <li>
+              <a
+                href="mailto:hello@leafmark.example"
+                aria-label="Email us at hello@leafmark.example"
+                >Email us</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/"
+                rel="noopener noreferrer"
+                target="_blank"
+                aria-label="Leafmark on Instagram (opens in a new tab)"
+                >Instagram</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.goodreads.com/"
+                rel="noopener noreferrer"
+                target="_blank"
+                aria-label="Leafmark on Goodreads (opens in a new tab)"
+                >Goodreads</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p style="color: white">
+          © 2025 Leafmark Reading Circle. All rights reserved.
+        </p>
+        <p>
+          <a href="#">Privacy policy</a> ·
+          <a href="#">Accessibility statement</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      function handleSubmit(e) {
+        e.preventDefault();
+        var form = document.getElementById("registration-form");
+        var name = document.getElementById("full-name").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var msg = document.getElementById("form-success");
+          var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!name || !email) {
+          msg.textContent =
+            "Please fill in your name and email before submitting.";
+          msg.style.display = "block";
+          msg.style.background = "var(--rust-lt)";
+          msg.style.borderColor = "var(--rust)";
+          msg.style.color = "var(--rust)";
+          return;
+        } else if (!emailPattern.test(email)) {
+          msg.textContent = "Please enter a valid email address.";
+          msg.style.display = "block";
+          msg.style.background = "var(--rust-lt)";
+          msg.style.borderColor = "var(--rust)";
+          msg.style.color = "var(--rust)";
+          return;
+        }
+
+        form
+          .querySelectorAll("input, select, textarea, button")
+          .forEach(function (el) {
+            el.disabled = true;
+          });
+
+        msg.textContent =
+          "Thank you, " +
+          name +
+          "! We\u2019ve received your registration and will confirm by email shortly.";
+        msg.style.display = "block";
+        msg.style.background = "var(--leaf-lt)";
+        msg.style.borderColor = "var(--leaf)";
+        msg.style.color = "var(--leaf-dk)";
+        msg.focus();
+      }
+    </script>
+  </body>
+</html>
