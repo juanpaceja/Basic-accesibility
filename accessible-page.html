@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leafmark – Community Reading Circle</title>
+    <title>Leafmark – Círculo de Lectura Comunitario</title>
     <meta
       name="description"
-      content="Leafmark is a community reading circle that connects book lovers, hosts events, and tracks reading progress together."
+      content="Leafmark es un círculo de lectura comunitario que conecta a amantes de los libros, organiza eventos y hace seguimiento del progreso lector en conjunto."
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -619,6 +619,9 @@
     </style>
   </head>
   <body>
+    <!-- Enlace de salto para usuarios de teclado y lectores de pantalla -->
+    <a class="skip-link" href="#contenido-principal">Ir al contenido principal</a>
+
     <header role="banner">
       <div class="header-inner">
         <div class="logo-group">
@@ -657,135 +660,121 @@
           </svg>
           <div>
             <p class="site-title">Leafmark</p>
-            <p class="site-tagline">A community reading circle</p>
+            <p class="site-tagline">Un círculo de lectura comunitario</p>
           </div>
         </div>
-        <a href="#join-form" class="header-cta">Join the circle</a>
+        <a href="#formulario-inscripcion" class="header-cta">Únete al círculo</a>
       </div>
     </header>
 
-    <nav aria-label="Main navigation">
+    <nav aria-label="Navegación principal">
       <ul role="list">
-        <li><a href="#" aria-current="page">Home</a></li>
-        <li><a href="#reading-schedule">Schedule</a></li>
-        <li><a href="#upcoming-event">Events</a></li>
-        <li><a href="#resources">Resources</a></li>
-        <li><a href="#join-form">Join</a></li>
+        <li><a href="#" aria-current="page">Inicio</a></li>
+        <li><a href="#calendario-lectura">Calendario</a></li>
+        <li><a href="#proximo-evento">Eventos</a></li>
+        <li><a href="#recursos">Recursos</a></li>
+        <li><a href="#formulario-inscripcion">Únete</a></li>
       </ul>
     </nav>
 
-    <main id="main-content">
-      <section class="hero" aria-labelledby="hero-heading">
+    <main id="contenido-principal">
+      <section class="hero" aria-labelledby="titulo-hero">
         <div class="hero-text">
-          <p class="section-label" aria-hidden="true">Spring 2025 season</p>
-          <h1 id="hero-heading">Read together. Think deeper.</h1>
+          <p class="section-label" aria-hidden="true">Temporada primavera 2025</p>
+          <h1 id="titulo-hero">Leer juntos. Pensar más profundo.</h1>
           <p>
-            Leafmark brings readers together for monthly discussions, author
-            talks, and shared reading lists. Whether you prefer fiction, essays,
-            or graphic novels — there's a circle for you.
+            Leafmark reúne a lectores para debates mensuales, charlas con autores
+            y listas de lectura compartidas. Ya sea que prefieras ficción, ensayos
+            o novela gráfica — hay un círculo para ti.
           </p>
-          <a href="#join-form" class="btn-primary">Reserve your spot</a>
+          <a href="#formulario-inscripcion" class="btn-primary">Reserva tu lugar</a>
         </div>
         <div class="hero-image">
           <img
             src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80"
-            alt="Shelves of colorful books in a warmly lit library"
+            alt="Estantes con libros coloridos en una biblioteca iluminada con luz cálida"
             width="800"
             height="320"
             loading="eager"
           />
-          <p class="image-credit">Photo: Unsplash / Susan Yin</p>
+          <p class="image-credit">Foto: Unsplash / Susan Yin</p>
         </div>
       </section>
 
       <section
         class="use-case"
-        id="reading-schedule"
-        aria-labelledby="schedule-heading"
+        id="calendario-lectura"
+        aria-labelledby="titulo-calendario"
       >
         <p class="section-label" aria-hidden="true">
-          Use case 1 — Group reading
+          Caso de uso 1 — Lectura en grupo
         </p>
-        <h2 id="schedule-heading">Spring reading schedule</h2>
+        <h2 id="titulo-calendario">Calendario de lectura de primavera</h2>
         <p class="lead">
-          Each month our circles tackle one title across fiction, non-fiction,
-          and graphic literature. Join any session — no prior attendance
-          required.
+          Cada mes nuestros círculos abordan un título de ficción, no ficción
+          o literatura gráfica. Únete a cualquier sesión — no se requiere
+          asistencia previa.
         </p>
 
         <div
           class="table-wrapper"
           role="region"
-          aria-label="Spring 2025 reading schedule"
+          aria-label="Calendario de lectura primavera 2025"
         >
           <table>
             <caption>
-              Spring 2025 — Leafmark reading programme. Meetings held online
-              every third Saturday, 5 PM Central.
+              Primavera 2025 — Programa de lectura Leafmark. Las reuniones se
+              realizan en línea cada tercer sábado a las 5 PM, hora del Centro.
             </caption>
             <thead>
               <tr>
-                <th scope="col">Month</th>
-                <th scope="col">Title</th>
-                <th scope="col">Author</th>
-                <th scope="col">Genre</th>
-                <th scope="col">Pages</th>
-                <th scope="col">Status</th>
+                <th scope="col">Mes</th>
+                <th scope="col">Título</th>
+                <th scope="col">Autor/a</th>
+                <th scope="col">Género</th>
+                <th scope="col">Páginas</th>
+                <th scope="col">Estado</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>March</td>
-                <td>The Ministry for the Future</td>
+                <td>Marzo</td>
+                <td>El Ministerio del Futuro</td>
                 <td>Kim Stanley Robinson</td>
-                <td>Cli-fi / Fiction</td>
+                <td>Cli-fi / Ficción</td>
                 <td>563</td>
                 <td>
-                  <span class="badge badge-on" aria-label="Status: Ongoing"
-                    >Ongoing</span
-                  >
+                  <span class="badge badge-on" aria-label="Estado: En curso">En curso</span>
                 </td>
               </tr>
               <tr>
-                <td>April</td>
-                <td>Braiding Sweetgrass</td>
+                <td>Abril</td>
+                <td>Trenzando Hierba Dulce</td>
                 <td>Robin Wall Kimmerer</td>
-                <td>Nature writing</td>
+                <td>Escritura sobre naturaleza</td>
                 <td>390</td>
                 <td>
-                  <span
-                    class="badge badge-upcoming"
-                    aria-label="Status: Upcoming"
-                    >Upcoming</span
-                  >
+                  <span class="badge badge-upcoming" aria-label="Estado: Próximamente">Próximamente</span>
                 </td>
               </tr>
               <tr>
-                <td>May</td>
-                <td>Persepolis</td>
+                <td>Mayo</td>
+                <td>Persépolis</td>
                 <td>Marjane Satrapi</td>
-                <td>Graphic memoir</td>
+                <td>Memoria gráfica</td>
                 <td>352</td>
                 <td>
-                  <span
-                    class="badge badge-upcoming"
-                    aria-label="Status: Upcoming"
-                    >Upcoming</span
-                  >
+                  <span class="badge badge-upcoming" aria-label="Estado: Próximamente">Próximamente</span>
                 </td>
               </tr>
               <tr>
-                <td>June</td>
-                <td>Crying in H Mart</td>
+                <td>Junio</td>
+                <td>Llorando en el H Mart</td>
                 <td>Michelle Zauner</td>
-                <td>Memoir</td>
+                <td>Memoria</td>
                 <td>256</td>
                 <td>
-                  <span
-                    class="badge badge-upcoming"
-                    aria-label="Status: Upcoming"
-                    >Upcoming</span
-                  >
+                  <span class="badge badge-upcoming" aria-label="Estado: Próximamente">Próximamente</span>
                 </td>
               </tr>
             </tbody>
@@ -795,133 +784,132 @@
 
       <section
         class="use-case"
-        id="upcoming-event"
-        aria-labelledby="event-heading"
+        id="proximo-evento"
+        aria-labelledby="titulo-evento"
       >
         <p class="section-label" aria-hidden="true">
-          Use case 2 — Event registration
+          Caso de uso 2 — Inscripción a evento
         </p>
-        <h2 id="event-heading">April community meetup</h2>
+        <h2 id="titulo-evento">Encuentro comunitario de abril</h2>
         <p class="lead">
-          Our in-person spring gathering features a discussion of
-          <em>Braiding Sweetgrass</em>, a seed-swap table, and a short talk by a
-          local botanist.
+          Nuestro encuentro presencial de primavera incluye un debate sobre
+          <em>Trenzando Hierba Dulce</em>, una mesa de intercambio de semillas
+          y una charla breve a cargo de una botánica local.
         </p>
 
         <div class="two-col">
-          <article class="event-card" aria-labelledby="card-title">
+          <article class="event-card" aria-labelledby="titulo-tarjeta">
             <img
               src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80"
-              alt="People sitting around a table in warm discussion at an evening event"
+              alt="Personas sentadas alrededor de una mesa en una animada conversación durante un evento vespertino"
               width="800"
               height="360"
               loading="lazy"
             />
             <div class="event-card-body">
               <p class="event-date">
-                <time datetime="2025-04-19T17:00"
-                  >Saturday, April 19, 2025 · 5:00 PM</time
-                >
+                <time datetime="2025-04-19T17:00">
+                  Sábado, 19 de abril de 2025 · 5:00 PM
+                </time>
               </p>
-              <h3 id="card-title">
-                Spring Gathering &amp; Braiding Sweetgrass Discussion
+              <h3 id="titulo-tarjeta">
+                Encuentro de Primavera &amp; Debate sobre Trenzando Hierba Dulce
               </h3>
               <p>
-                Join us at the <strong>Colima Municipal Library</strong>, Sala
-                B, for two hours of guided discussion, snacks, and a seed
-                exchange inspired by Robin Wall Kimmerer's ideas on plant
-                kinship.
+                Únete a nosotros en la <strong>Biblioteca Municipal de Colima</strong>,
+                Sala B, para dos horas de debate guiado, refrigerios e intercambio
+                de semillas inspirado en las ideas de Robin Wall Kimmerer sobre
+                el parentesco con las plantas.
               </p>
               <a
                 href="https://www.openstreetmap.org/?mlat=19.2452&mlon=-103.7241#map=16/19.2452/-103.7241"
                 rel="noopener noreferrer"
                 target="_blank"
-                aria-label="View Colima Municipal Library on OpenStreetMap (opens in a new tab)"
+                aria-label="Ver la Biblioteca Municipal de Colima en OpenStreetMap (se abre en una pestaña nueva)"
               >
-                View on map ↗
+                Ver en el mapa ↗
               </a>
             </div>
           </article>
 
-          <div class="form-card" id="join-form">
-            <h3>Reserve your spot</h3>
+          <div class="form-card" id="formulario-inscripcion">
+            <h3>Reserva tu lugar</h3>
             <p class="form-intro">
-              Spaces are limited to 24 attendees. We'll confirm your place by
-              email within 48 hours.
+              Los lugares están limitados a 24 asistentes. Confirmaremos tu
+              lugar por correo electrónico en un plazo de 48 horas.
             </p>
 
             <form
               id="registration-form"
               novalidate
-              aria-label="Event registration form"
+              aria-label="Formulario de inscripción al evento"
               onsubmit="handleSubmit(event)"
             >
               <div class="form-group">
-                <label for="full-name">
-                  Full name
+                <label for="nombre-completo">
+                  Nombre completo
                   <span class="required-mark" aria-hidden="true">*</span>
                 </label>
                 <input
                   type="text"
-                  id="full-name"
-                  name="full-name"
+                  id="nombre-completo"
+                  name="nombre-completo"
                   autocomplete="name"
                   required
                   aria-required="true"
-                  aria-describedby="name-hint"
-                  placeholder="e.g. Ana García"
+                  aria-describedby="indicio-nombre"
+                  placeholder="Ej. Ana García"
                 />
-                <p id="name-hint" class="form-hint">
-                  First and last name as you'd like to be addressed.
+                <p id="indicio-nombre" class="form-hint">
+                  Nombre y apellido como te gustaría que te llamaran.
                 </p>
               </div>
 
               <div class="form-group">
-                <label for="email">
-                  Email address
+                <label for="correo">
+                  Correo electrónico
                   <span class="required-mark" aria-hidden="true">*</span>
                 </label>
                 <input
                   type="email"
-                  id="email"
-                  name="email"
+                  id="correo"
+                  name="correo"
                   autocomplete="email"
                   required
                   aria-required="true"
-                  placeholder="you@example.com"
+                  placeholder="tu@ejemplo.com"
                 />
               </div>
 
               <div class="form-group">
-                <label for="circle">Which reading circle do you attend?</label>
-                <select id="circle" name="circle" autocomplete="off">
-                  <option value="">— Select one —</option>
-                  <option value="fiction">Fiction circle</option>
-                  <option value="nonfiction">Non-fiction circle</option>
-                  <option value="graphic">Graphic &amp; visual lit</option>
-                  <option value="new">I'm new — any circle!</option>
+                <label for="circulo">¿A qué círculo de lectura asistes?</label>
+                <select id="circulo" name="circulo" autocomplete="off">
+                  <option value="">— Selecciona uno —</option>
+                  <option value="fiction">Círculo de ficción</option>
+                  <option value="nonfiction">Círculo de no ficción</option>
+                  <option value="graphic">Literatura gráfica y visual</option>
+                  <option value="new">Soy nuevo/a — ¡cualquier círculo!</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label for="message"
-                  >Anything you'd like to bring up at the event?
-                  (optional)</label
-                >
+                <label for="mensaje">
+                  ¿Algo que te gustaría comentar en el evento? (opcional)
+                </label>
                 <textarea
-                  id="message"
-                  name="message"
+                  id="mensaje"
+                  name="mensaje"
                   rows="3"
-                  placeholder="A question for the discussion, a plant to swap…"
-                  aria-describedby="msg-hint"
+                  placeholder="Una pregunta para el debate, una planta para intercambiar…"
+                  aria-describedby="indicio-mensaje"
                 ></textarea>
-                <p id="msg-hint" class="form-hint">
-                  This helps us tailor the discussion. Max 300 characters.
+                <p id="indicio-mensaje" class="form-hint">
+                  Esto nos ayuda a adaptar el debate. Máximo 300 caracteres.
                 </p>
               </div>
 
               <button type="submit" class="btn-submit">
-                Send registration
+                Enviar inscripción
               </button>
 
               <div
@@ -938,20 +926,20 @@
 
       <section
         class="resources"
-        id="resources"
-        aria-labelledby="resources-heading"
+        id="recursos"
+        aria-labelledby="titulo-recursos"
       >
-        <p class="section-label" aria-hidden="true">Further reading</p>
-        <h2 id="resources-heading">Useful resources</h2>
+        <p class="section-label" aria-hidden="true">Lecturas complementarias</p>
+        <h2 id="titulo-recursos">Recursos útiles</h2>
         <ul class="resource-links" role="list">
           <li>
             <a
               href="https://kimmerer.com/"
               rel="noopener noreferrer"
               target="_blank"
-              aria-label="Robin Wall Kimmerer's official website (opens in a new tab)"
+              aria-label="Sitio oficial de Robin Wall Kimmerer (se abre en una pestaña nueva)"
             >
-              <p class="link-label">Author site</p>
+              <p class="link-label">Sitio de la autora</p>
               <p class="link-title">Robin Wall Kimmerer →</p>
             </a>
           </li>
@@ -960,10 +948,10 @@
               href="https://www.worldcat.org/"
               rel="noopener noreferrer"
               target="_blank"
-              aria-label="WorldCat library catalogue (opens in a new tab)"
+              aria-label="Catálogo de bibliotecas WorldCat (se abre en una pestaña nueva)"
             >
-              <p class="link-label">Find in a library</p>
-              <p class="link-title">WorldCat catalogue →</p>
+              <p class="link-label">Búscalo en una biblioteca</p>
+              <p class="link-title">Catálogo WorldCat →</p>
             </a>
           </li>
           <li>
@@ -971,9 +959,9 @@
               href="https://www.goodreads.com/"
               rel="noopener noreferrer"
               target="_blank"
-              aria-label="Goodreads reading tracker (opens in a new tab)"
+              aria-label="Goodreads para seguimiento de lecturas (se abre en una pestaña nueva)"
             >
-              <p class="link-label">Track your reading</p>
+              <p class="link-label">Registra tu lectura</p>
               <p class="link-title">Goodreads →</p>
             </a>
           </li>
@@ -982,9 +970,9 @@
               href="https://standardebooks.org/"
               rel="noopener noreferrer"
               target="_blank"
-              aria-label="Standard Ebooks — free, high-quality ebooks (opens in a new tab)"
+              aria-label="Standard Ebooks — libros electrónicos gratuitos y de alta calidad (se abre en una pestaña nueva)"
             >
-              <p class="link-label">Free ebooks</p>
+              <p class="link-label">Libros electrónicos gratuitos</p>
               <p class="link-title">Standard Ebooks →</p>
             </a>
           </li>
@@ -996,27 +984,27 @@
       <div class="footer-inner">
         <div class="footer-brand">
           <strong>Leafmark</strong>
-          <p>A community reading circle<br />based in Colima, Mexico.</p>
+          <p>Un círculo de lectura comunitario<br />con sede en Colima, México.</p>
         </div>
 
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <h2>Navigate</h2>
+        <nav class="footer-nav" aria-label="Navegación del pie de página">
+          <h2>Navegar</h2>
           <ul role="list">
-            <li><a href="#">Home</a></li>
-            <li><a href="#reading-schedule">Schedule</a></li>
-            <li><a href="#upcoming-event">Events</a></li>
-            <li><a href="#join-form">Join</a></li>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#calendario-lectura">Calendario</a></li>
+            <li><a href="#proximo-evento">Eventos</a></li>
+            <li><a href="#formulario-inscripcion">Únete</a></li>
           </ul>
         </nav>
 
-        <nav class="footer-nav" aria-label="External resources">
-          <h2>Connect</h2>
+        <nav class="footer-nav" aria-label="Recursos externos">
+          <h2>Conectar</h2>
           <ul role="list">
             <li>
               <a
-                href="mailto:hello@leafmark.example"
-                aria-label="Email us at hello@leafmark.example"
-                >Email us</a
+                href="mailto:hola@leafmark.ejemplo"
+                aria-label="Escríbenos a hola@leafmark.ejemplo"
+                >Escríbenos</a
               >
             </li>
             <li>
@@ -1024,7 +1012,7 @@
                 href="https://www.instagram.com/"
                 rel="noopener noreferrer"
                 target="_blank"
-                aria-label="Leafmark on Instagram (opens in a new tab)"
+                aria-label="Leafmark en Instagram (se abre en una pestaña nueva)"
                 >Instagram</a
               >
             </li>
@@ -1033,7 +1021,7 @@
                 href="https://www.goodreads.com/"
                 rel="noopener noreferrer"
                 target="_blank"
-                aria-label="Leafmark on Goodreads (opens in a new tab)"
+                aria-label="Leafmark en Goodreads (se abre en una pestaña nueva)"
                 >Goodreads</a
               >
             </li>
@@ -1043,11 +1031,11 @@
 
       <div class="footer-bottom">
         <p style="color: white">
-          © 2025 Leafmark Reading Circle. All rights reserved.
+          © 2025 Círculo de Lectura Leafmark. Todos los derechos reservados.
         </p>
         <p>
-          <a href="#">Privacy policy</a> ·
-          <a href="#">Accessibility statement</a>
+          <a href="#">Política de privacidad</a> ·
+          <a href="#">Declaración de accesibilidad</a>
         </p>
       </div>
     </footer>
@@ -1056,25 +1044,27 @@
       function handleSubmit(e) {
         e.preventDefault();
         var form = document.getElementById("registration-form");
-        var name = document.getElementById("full-name").value.trim();
-        var email = document.getElementById("email").value.trim();
+        var nombre = document.getElementById("nombre-completo").value.trim();
+        var correo = document.getElementById("correo").value.trim();
         var msg = document.getElementById("form-success");
-          var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var patronCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        if (!name || !email) {
+        if (!nombre || !correo) {
           msg.textContent =
-            "Please fill in your name and email before submitting.";
+            "Por favor, completa tu nombre y correo electrónico antes de enviar.";
           msg.style.display = "block";
           msg.style.background = "var(--rust-lt)";
           msg.style.borderColor = "var(--rust)";
           msg.style.color = "var(--rust)";
+          msg.focus();
           return;
-        } else if (!emailPattern.test(email)) {
-          msg.textContent = "Please enter a valid email address.";
+        } else if (!patronCorreo.test(correo)) {
+          msg.textContent = "Por favor, ingresa una dirección de correo electrónico válida.";
           msg.style.display = "block";
           msg.style.background = "var(--rust-lt)";
           msg.style.borderColor = "var(--rust)";
           msg.style.color = "var(--rust)";
+          msg.focus();
           return;
         }
 
@@ -1085,9 +1075,9 @@
           });
 
         msg.textContent =
-          "Thank you, " +
-          name +
-          "! We\u2019ve received your registration and will confirm by email shortly.";
+          "¡Gracias, " +
+          nombre +
+          "! Hemos recibido tu inscripción y confirmaremos tu lugar por correo electrónico en breve.";
         msg.style.display = "block";
         msg.style.background = "var(--leaf-lt)";
         msg.style.borderColor = "var(--leaf)";
